@@ -1,13 +1,15 @@
-#SUPERSET DOCKER GUIDE
+# Docker image for Superset+LdapIntegration + DB Postgres + Redis
 
-git clone https://github.com/lorenzoeusepi77/superset_last.git
+Follow this guide to install and run Superset docker image:
 
-cd superset_last/docker/
+	git clone https://github.com/lorenzoeusepi77/superset.git
+
+	cd superset
 
 # Configure LDAP parameter inside the configuration file "superset_config.py" before to build superset image 
 
 	AUTH_TYPE = AUTH_LDAP
-	AUTH_LDAP_SERVER = "ldaps://server:636"
+	AUTH_LDAP_SERVER = "ldaps://server:389"
 	AUTH_LDAP_SEARCH = "cn=users,cn=accounts,dc=test,dc=example,dc=it"
 	AUTH_LDAP_UID_FIELD = "uid"
 	AUTH_LDAP_FIRSTNAME_FIELD = "givenName"
@@ -18,12 +20,21 @@ cd superset_last/docker/
 	AUTH_LDAP_ALLOW_SELF_SIGNED = True
 
 
-./build.sh                                     #Build superset image
+#Build superset image
+
+	./build.sh                           
 
 
-docker-compose up -d                           #Start superset - postgres - redis
+#Start superset - postgres - redis
+
+	docker-compose up -d                 
 
 
-./init.sh                                      #First time to create admin user (admin password) - initialize db - exmaple 
+#First time to create admin user (User: admin Password: password) - initialize db - exmaple 
+
+	./init.sh                            
 
 
+Access to superset with your browser with this URL:PORT:
+
+	http://localhost:8088
