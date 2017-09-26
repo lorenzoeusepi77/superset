@@ -6,7 +6,9 @@ Follow this guide to install and run Superset docker image:
 
 	cd superset
 
-# Configure LDAP parameter inside the configuration file "superset_config.py" before to build superset image 
+
+
+Configure LDAP parameters inside the configuration file "superset_config.py" before to build image. If you don't need LDAP auth you must comment the first line: 
 
 	AUTH_TYPE = AUTH_LDAP
 	AUTH_LDAP_SERVER = "ldaps://server:389"
@@ -38,3 +40,5 @@ Follow this guide to install and run Superset docker image:
 Access to superset with your browser with this URL:PORT:
 
 	http://localhost:8088
+
+NOTE: You can login with local admin just if you don't have LDAP integration active.
